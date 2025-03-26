@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copy the csproj file and restore any dependencies (via nuget)
-COPY *.csproj ./
+COPY src/*.csproj ./  # Adjust this based on your actual project structure
 RUN dotnet restore
 
 # Copy the rest of the application files
@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=build /app/out ./
 
 # Expose the application port (for web applications)
-EXPOSE 8000
+EXPOSE 80
 
 # Specify the entry point for the application (adjust for your app's entry point)
 ENTRYPOINT ["dotnet", "YourApp.dll"]
