@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copy the csproj file and restore any dependencies (via nuget)
-COPY src/*.csproj ./  # Adjust this based on your actual project structure
+COPY src/*. .  # Adjust this based on your actual project structure
 RUN dotnet restore
 
 # Copy the rest of the application files
